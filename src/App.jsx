@@ -9,7 +9,6 @@ function App() {
   const hits = data?.personlista[Object.keys(data?.personlista)[1]];
   const date = data?.personlista[Object.keys(data?.personlista)[0]];
   const persons = data?.personlista?.person;
-  console.log("err", error);
 
   return (
     <>
