@@ -1,0 +1,26 @@
+.Card {
+  display: block;
+  margin: auto;
+  margin-top: 5px;
+  border: 1px solid #000000d7;
+  border-radius: 5px;
+  width: 80%;
+  /* background-color: rgb(141, 131, 131); */
+  background-color: rgba(219, 165, 95, 0.5);
+  box-sizing: border-box;
+  color: white;
+}
+
+.Card:hover {
+  color: #fff;
+  background-color: #3fd1add7;
+  /* box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px; */
+  background-color: rgba(219, 165, 95, 0.8);
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop users: */
+  .Card {
+    width: 55%;
+  }
+}

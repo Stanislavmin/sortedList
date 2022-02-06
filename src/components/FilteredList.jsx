@@ -4,15 +4,10 @@ import { swedishParties } from "../constans/swedish-parties.constants";
 import { useState } from "react";
 
 export default function FilteredList({ date, hits, persons }) {
-  console.log(persons);
-
   const [filter, setFilter] = useState("");
-
   const filteredPersons = filter
     ? persons.filter((persons) => persons.parti === filter)
     : persons;
-
-  console.log("filtered Data", filteredPersons);
 
   const filterButtonList = swedishParties.map((partyName) => (
     <FilterButton
@@ -23,6 +18,7 @@ export default function FilteredList({ date, hits, persons }) {
     />
   ));
 
+  // I'd use unsorted list as default option
   const cardList = filteredPersons.map((element) => (
     <Card
       key={element.intressent_id}
@@ -31,12 +27,22 @@ export default function FilteredList({ date, hits, persons }) {
     />
   ));
 
+  const sortedCardList = filteredPersons
+    .sort((a, b) => a.parti.localeCompare(b.parti))
+    .map((element) => (
+      <Card
+        key={element.intressent_id}
+        name={element.sorteringsnamn}
+        politicalParty={element.parti}
+      />
+    ));
+
   return (
     <div>
-      <p>Grabbed {hits} people</p>
-      <p>Latest fetch {date}</p>
-      {filterButtonList}
-      <div>{cardList}</div>
+      <h1>Grabbed {hits} people</h1>
+      <h2>Latest fetch {date}</h2>
+      <div>{filterButtonList}</div>
+      <div>{sortedCardList}</div>
     </div>
   );
 }

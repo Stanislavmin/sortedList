@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/App.css";
 import useFetch from "react-fetch-hook";
 import { api } from "./constans/api-endpoints.constants";
 import FilteredList from "./components/FilteredList";
@@ -11,11 +11,16 @@ function App() {
   const persons = data?.personlista?.person;
 
   return (
-    <>
-      {isLoading && <h1>Rendering fetched personlist</h1>}
+    <div className="App">
+      {isLoading && (
+        <div>
+          <h1>Fetching your data ...</h1>
+          <div className="dual-ring-loader"></div>
+        </div>
+      )}
       {!!error && <h1>Something went wrong during datafetch</h1>}
       {!isLoading && <FilteredList hits={hits} date={date} persons={persons} />}
-    </>
+    </div>
   );
 }
 

@@ -10,3 +10,5 @@ export async function fetchPersonList() {
     console.log("error fetching person list");
   }
 }
+
+// not in use, running react-fetch-hook instead

@@ -1,4 +1,8 @@
+import "../../styles/FilterButton.css";
+
 const FilterButton = ({ text, filter, filterFn }) => {
+  const currentlyFiltered = text === filter;
+
   function applyFilter() {
     filterFn(text);
   }
@@ -10,7 +14,7 @@ const FilterButton = ({ text, filter, filterFn }) => {
   return (
     <button
       onClick={() => {
-        filter ? resetFilter() : applyFilter();
+        currentlyFiltered ? resetFilter() : applyFilter();
       }}
     >
       {text}
