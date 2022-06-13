@@ -1,6 +1,6 @@
 {
   "name": "sortedlist",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -9,10 +9,14 @@
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-fetch-hook": "^1.8.5"
+    "react-fetch-hook": "^1.9.5"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.7",
-    "vite": "^2.7.2"
+    "msw": "^0.39.2",
+    "vite": "^2.9.5"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
