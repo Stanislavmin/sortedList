@@ -19,7 +19,7 @@ function App() {
         </div>
       )}
       {!!error && <h1>Something went wrong during datafetch</h1>}
-      {!isLoading && <FilteredList hits={hits} date={date} persons={persons} />}
+      {!error && !isLoading && <FilteredList hits={hits} date={date} persons={persons} />}
     </div>
   );
 }
