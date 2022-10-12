@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+    - main
+  workflow_dispatch: 
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Init
+        run: npm init
+        
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build vite project
+        run: npm run build

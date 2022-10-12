@@ -10,6 +10,14 @@ function App() {
   const date = data?.personlista[Object.keys(data?.personlista)[0]];
   const persons = data?.personlista?.person;
 
+  // need a check for clipboard api, 94% of browsers support it
+  // also need a good visual feedback that text has successfully been copied
+  // const copyToClipboard = (text: string) => navigator.clipboard?.writeText && navigator.clipboard.writeText(text)
+
+  //    <button type="button" onClick={() => copyToClipboard("Hello world")}>
+  //        Press here to copy text
+  //    </button> */}
+
   return (
     <div className="App">
       {isLoading && (
@@ -19,7 +27,9 @@ function App() {
         </div>
       )}
       {!!error && <h1>Something went wrong during datafetch</h1>}
-      {!error && !isLoading && <FilteredList hits={hits} date={date} persons={persons} />}
+      {!error && !isLoading && (
+        <FilteredList hits={hits} date={date} persons={persons} />
+      )}
     </div>
   );
 }
