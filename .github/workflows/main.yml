@@ -1,20 +1,67 @@
 on:
   push:
     branches:
-    - main
-  workflow_dispatch: 
+      - main
+  workflow_dispatch:
 
 jobs:
-  deploy:
-    name: Deploy
+  build:
+    name: Build
     runs-on: ubuntu-latest
+    # permissions:
+    #   pages: write
+    #   id-token: write
 
     steps:
-      - name: Init
-        run: npm init
-        
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build vite project
         run: npm run build
+
+      # - name: Upload artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: "github-pages"
+      #     path: "dist/"
+
+      - name: Deploy 🚀
+        #   id: deployment
+        #   uses: actions/deploy-pages@v4
+        # environment: production
+
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+      # - name: Deploy
+      #   uses: peaceiris/actions-gh-pages@v4
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./dist
+
+  # deploy:
+  #   name: Deploy
+  #   needs: build
+  #   permissions:
+  #     pages: write # to deploy to Pages
+  #     id-token: write # to verify the deployment originates from an appropriate source
+
+  #   # Deploy to the github-pages environment
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+
+  #   # Specify runner + deployment step
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Download artifact
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: "github-pages"
+
+  #     - name: Deploy to GitHub Pages 🚀
+  #       id: deployment
+  #       uses: actions/deploy-pages@v3
