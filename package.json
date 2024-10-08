@@ -4,7 +4,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:slim": "vite build && npx rimraf dist/mockServiceWorker.js",
     "preview": "vite preview"
   },
   "dependencies": {

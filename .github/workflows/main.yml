@@ -20,7 +20,6 @@ jobs:
         run: npm ci
 
       - name: Build vite project
-        # run: npm run build:slim
         run: npm run build
 
         # Delete unwanted files from the dist folder
