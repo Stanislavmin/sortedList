@@ -20,7 +20,16 @@ jobs:
         run: npm ci
 
       - name: Build vite project
+        # run: npm run build:slim
         run: npm run build
+
+        # Delete unwanted files from the dist folder
+      - name: Delete unwanted files
+        run: rm dist/mockServiceWorker.js
+
+      # Print contents of the dist folder to verify deletion
+      - name: List dist folder files
+        run: ls -R dist # Recursively lists the contents of the dist folder to verify the deletion
 
       # - name: Upload artifact
       #   uses: actions/upload-artifact@v4
