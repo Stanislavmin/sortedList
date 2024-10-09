@@ -1,3 +1,3 @@
 export const api = {
-    person:'http://data.riksdagen.se/personlista/?utformat=json'
-}
+  person: "https://data.riksdagen.se/personlista/?utformat=json",
+};
